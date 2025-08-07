@@ -9,7 +9,7 @@ create a rds database in same vpc
 
 #### Install GIT
 ```
-sudo yum update -y
+sudo yum update -y 
 
 sudo yum install git -y
 
