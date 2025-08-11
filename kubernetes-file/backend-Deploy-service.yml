@@ -18,7 +18,7 @@ spec:
       - name: backend
         image: 841162679501.dkr.ecr.us-east-1.amazonaws.com/backend:latest
         ports:
-        - containerPort: 81
+        - containerPort: 81 # Port your app INSIDE the container listens on 
         env:
         - name: DB_HOST
           valueFrom:
@@ -46,7 +46,7 @@ spec:
               name: db-secret
               key: db_password
         - name: PORT
-          value: "3306"  # Adjust if necessary
+          value: "81"  # Adjust if necessary
 
 ---
 apiVersion: v1
@@ -56,7 +56,7 @@ metadata:
 spec:
   ports:
   - port: 80
-    targetPort: 80
+    targetPort: 81
     protocol: TCP
       #nodePort: 31005  # Optional: Specify a #nodePort if you want a fixed port
   selector:
